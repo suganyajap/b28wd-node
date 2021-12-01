@@ -1,7 +1,14 @@
 import express from "express";
 const router=express.Router();
+import { getMovies, 
+    createMovies, 
+    getMovieById, 
+    deleteMovieById, 
+    updateMovieById } from '../helper.js';
 
-router.get('/movies', async (request,response)=>
+router
+.route("/")
+.get( async (request,response)=>
 {
     //request->query params
     console.log(request.query);
@@ -16,14 +23,15 @@ router.get('/movies', async (request,response)=>
     //console.log(filterMovies);
     //cursor-pagination 1 2 3 4 5 next->
      response.send(filterMovies);
-});
-router.post("/movies",async(request,response)=>{
+})
+.post(async(request,response)=>{
     const data =request.body;
     //const movies=db.movies.insertMany(data)
     const  result = await createMovies(data);
     response.send(result);
 });
-router.get('/movies/:id',async (request,response)=>
+router.route("/:id")
+.get(async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
@@ -33,8 +41,8 @@ router.get('/movies/:id',async (request,response)=>
     console.log(movie);
   movie ? response.send(movie) : response.status(404).send({message:"No matching movie found"});
 
-});
-router.delete('/movies/:id',async (request,response)=>
+})
+.delete(async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
@@ -46,8 +54,8 @@ router.delete('/movies/:id',async (request,response)=>
   ? response.send(result) 
   : response.status(404).send({message:"No matching movie found"});
 
-});
-router.put('/movies/:id',async (request,response)=>
+})
+.put(async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
@@ -59,3 +67,4 @@ router.put('/movies/:id',async (request,response)=>
     response.send(movie);
 
 });
+export const moviesRouter=router;
