@@ -1,3 +1,6 @@
+import express from "express";
+const router=express.Router();
+
 app.get('/movies', async (request,response)=>
 {
     //request->query params

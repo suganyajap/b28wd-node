@@ -24,7 +24,7 @@ app.get('/',(request,response)=>
     response.send("Hello 🌍😊");
 });
 
-
+app.use("/movies",moviesRouter);
 app.listen(PORT,()=>console.log("App is started in ",PORT));
 
 
