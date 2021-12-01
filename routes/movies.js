@@ -1,7 +1,7 @@
 import express from "express";
 const router=express.Router();
 
-app.get('/movies', async (request,response)=>
+router.get('/movies', async (request,response)=>
 {
     //request->query params
     console.log(request.query);
@@ -17,13 +17,13 @@ app.get('/movies', async (request,response)=>
     //cursor-pagination 1 2 3 4 5 next->
      response.send(filterMovies);
 });
-app.post("/movies",async(request,response)=>{
+router.post("/movies",async(request,response)=>{
     const data =request.body;
     //const movies=db.movies.insertMany(data)
     const  result = await createMovies(data);
     response.send(result);
 });
-app.get('/movies/:id',async (request,response)=>
+router.get('/movies/:id',async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
@@ -34,7 +34,7 @@ app.get('/movies/:id',async (request,response)=>
   movie ? response.send(movie) : response.status(404).send({message:"No matching movie found"});
 
 });
-app.delete('/movies/:id',async (request,response)=>
+router.delete('/movies/:id',async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
@@ -47,7 +47,7 @@ app.delete('/movies/:id',async (request,response)=>
   : response.status(404).send({message:"No matching movie found"});
 
 });
-app.put('/movies/:id',async (request,response)=>
+router.put('/movies/:id',async (request,response)=>
 {
     console.log(request.params);
     const { id } = request.params;
