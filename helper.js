@@ -20,7 +20,7 @@ import { client } from "./index.js";
     return await client
         .db("b28wd")
         .collection("movies")
-        .deleteOne({ id: id });
+        .deleteOne({ id: id});
 }
  async function getMovieById(id) {
     return await client

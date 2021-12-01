@@ -3,11 +3,13 @@ import express from "express";//"type":"module"
 import { MongoClient } from "mongodb";
 import dotenv from 'dotenv';
 import { moviesRouter } from "./routes/movies.js";
-import { getMovies, createMovies, getMovieById, deleteMovieById, updateMovieById } from "./helper.js";
+import cors from "cors";
+//import { getMovies, createMovies, getMovieById, deleteMovieById, updateMovieById } from "./helper.js";
 dotenv.config();//it will put all the key and value pair inside the process.env
 console.log(process.env);
 const app=express();
 const PORT=process.env.PORT;
+app.use(cors());//3rd party middleware,every request in the app is allowed access/access by any origin/any where
 //middleware
 app.use(express.json());//every request in the app body is parsed to json
 //express.json()-inbuilt middleware
