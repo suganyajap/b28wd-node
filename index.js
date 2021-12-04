@@ -50,7 +50,7 @@ app.use("/users",usersRouter);
 //   ];
   app.get('/recipes',async(request,response)=>
 {   
-    const recipes=await client.db("b28wd").collection("movies").find({}).toArray();
+    const recipes=await client.db("b28wd").collection("recipes").find({}).toArray();
     response.send(recipes);
 });
 app.post('/recipes',async(request,response)=>{
