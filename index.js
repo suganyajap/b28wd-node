@@ -31,23 +31,23 @@ app.get('/',(request,response)=>
 
 app.use("/movies",moviesRouter);
 app.use("/users",usersRouter);
-const recipes=[
-    {name:"panner butter masala",
-    picture:"https://www.indianveggiedelight.com/wp-content/uploads/2017/09/instant-pot-paneer-butter-masala-featured.jpg"
-  },
-  {name:"biriyani",
-    picture:"https://thumbs.dreamstime.com/z/chicken-dum-biryani-white-bowl-traditional-indian-one-pot-dish-background-high-angle-view-156498926.jpg"
-  },
-  {name:"gobi manchurian",
-    picture:"https://www.seekpng.com/png/detail/794-7942259_cauliflower-manchurian-gobi-manchurian-images-png.png"
-  },
-  {name:"parota shawarma",
-    picture:"https://bigoven-res.cloudinary.com/image/upload/t_recipe-1280/egg-paratha-1b75f5.jpg"
-  },
-  {name:"chicken tandoori",
-    picture:"https://image.shutterstock.com/image-photo/arabian-arabic-cuisine-grilled-tandoori-260nw-1202127400.jpg"
-  },
-  ];
+// const recipes=[
+//     {name:"panner butter masala",
+//     picture:"https://www.indianveggiedelight.com/wp-content/uploads/2017/09/instant-pot-paneer-butter-masala-featured.jpg"
+//   },
+//   {name:"biriyani",
+//     picture:"https://thumbs.dreamstime.com/z/chicken-dum-biryani-white-bowl-traditional-indian-one-pot-dish-background-high-angle-view-156498926.jpg"
+//   },
+//   {name:"gobi manchurian",
+//     picture:"https://www.seekpng.com/png/detail/794-7942259_cauliflower-manchurian-gobi-manchurian-images-png.png"
+//   },
+//   {name:"parota shawarma",
+//     picture:"https://bigoven-res.cloudinary.com/image/upload/t_recipe-1280/egg-paratha-1b75f5.jpg"
+//   },
+//   {name:"chicken tandoori",
+//     picture:"https://image.shutterstock.com/image-photo/arabian-arabic-cuisine-grilled-tandoori-260nw-1202127400.jpg"
+//   },
+//   ];
   app.get('/recipes',async(request,response)=>
 {   
     const recipes=await client.db("b28wd").collection("movies").find({}).toArray();
