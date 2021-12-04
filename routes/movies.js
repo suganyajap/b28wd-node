@@ -5,6 +5,7 @@ import { getMovies,
     getMovieById, 
     deleteMovieById, 
     updateMovieById } from '../helper.js';
+//import { auth } from "../middleware/auth.js";
 
 router
 .route("/")
@@ -46,7 +47,7 @@ router.route("/:id")
 {
     console.log(request.params);
     const { id } = request.params;
-    //db.movies.findOne({id:"102"})
+    //db.movies.deleteOne({id:"102"})
     const result = await deleteMovieById(id);
     //const movie=movies.find((mv)=>mv.id===id);
     console.log(result);
